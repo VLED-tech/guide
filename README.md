@@ -12,4 +12,4 @@
 
 3.‰—p•Ò
 
-3.1 [•Ûˆç‰€‚ÌVİêŠŒŸ“¢](scenario-kindergarden.md)
+3.1 [•Ûˆç‰€‚ÌVİêŠŒŸ“¢](scenario-nursery.md)
