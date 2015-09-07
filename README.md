@@ -6,11 +6,10 @@
 
 2.基礎編
 
-2.1.シナリオ1: [サンプルシナリオ](sample-scenario.md)
+2.1 [データの入手先](data.md)
 
-2.2 シナリオ2: △△□□
+2.2 [サンプルシナリオ](scenario-sample.md)
 
 3.応用編
 
-4.発展編
-
+3.1 [保育園の新設場所検討](scenario-kindergarden.md)
