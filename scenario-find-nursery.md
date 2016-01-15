@@ -48,7 +48,7 @@
 ![図 定員表の並び換え条件](images/scenario-find-nursery/capacity1.png "図 定員表の並び換え条件")   
 図 定員表の並び換え条件
 
-![図 整形後の定員表](images/scenario-find-nursery/capacity1.png "図 整形後の定員表")   
+![図 整形後の定員表](images/scenario-find-nursery/capacity2.png "図 整形後の定員表")   
 図 整形後の定員表
 
 そして、整形された表を横に並べる。
