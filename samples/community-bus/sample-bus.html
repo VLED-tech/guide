@@ -1,0 +1,70 @@
+<!DOCTYPE html "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Google Maps API サンプルページ</title>
+
+	<!-- jQuery -->
+	<script type="text/javascript" src="jquery-2.2.0.min.js"></script>
+
+    <!-- Google Maps API Key --->
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=__APIKEY__&libraries=geometry&sensor=false"></script>
+    
+    <!-- 地図を表示するJavascriptコード --->
+    <script type="text/javascript">
+    function dispMap() {
+      var place = new google.maps.LatLng(35.943451,136.188843); // 中心点の緯度・経度
+      var params = {
+        zoom: 14,
+        center: place,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(document.getElementById("sample_map"), params);
+    }
+    </script>
+
+    <!-- つつじバスの位置を表示するJavascriptコード --->
+    <script type="text/javascript">
+    function dispBus( rosenid ) {
+      // 地図を表示
+      var params = {
+        zoom: 14,
+        center: new google.maps.LatLng(35.943451,136.188843),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(document.getElementById("sample_map"), params);
+      // つつじバスのWeb APIからバスの位置を取得。バスが走っていたらその位置を表示
+      // ※ urlの末尾に "?callback=?" をつけているのは、JSONPに基づいてAPIを発行するため。
+      var url = 'http://tutujibus.com/rosenLookup.php?callback=?';
+      for (var i=0; i<20; i++) {
+        $.getJSON(url, {rosenid: rosenid, binid: i}, function(ret){
+          if (ret.isRunning) {
+             var busPos = new google.maps.LatLng(ret.latitude, ret.longitude);
+             var marker = new google.maps.Marker({
+               position: busPos,
+               map: map,
+               title: "bus"});
+             if (navigator.geolocation) {
+               navigator.geolocation.getCurrentPosition(function(pos){
+                 if (google.maps.geometry.spherical.computeDistanceBetween(pos, busPos) < 1000) {
+                   alert("近くにバスが来ました");
+                 }
+               }, null);
+             }
+          }
+        });
+      }
+    }
+    </script>
+
+
+  </head>
+  <body onload="dispMap()">
+    <p><a href="#" onclick="dispBus(1);">1.中央線</a>&nbsp;<a href="#" onclick="dispBus(2);">2.鯖江南線</a>&nbsp;<a href="#" onclick="dispBus(3);">3.新横江線</a>&nbsp;<a href="#" onclick="dispBus(4);">4.神明線</a>&nbsp;<a href="#" onclick="dispBus(5);">5.片上・北中山線</a>&nbsp;<a href="#" onclick="dispBus(6);">6.立待線</a>&nbsp;<a href="#" onclick="dispBus(7);">7.吉川線</a>&nbsp;<a href="#" onclick="dispBus(8);">8.豊線</a>&nbsp;<a href="#" onclick="dispBus(9);">9.中河・北中山線</a>&nbsp;<a href="#" onclick="dispBus(10);">10.河和田線</a>&nbsp;<a href="#" onclick="dispBus(11);">11.丹南高校線</a>&nbsp;<a href="#" onclick="dispBus(12);">12.歴史の道線</a>&nbsp;<a href="#" onclick="dispBus(99);">99.福鉄鯖浦線</a></p>
+
+    <!-- 地図を表示する場所 --->
+    <div id="sample_map" style="width:600px; height:400px"></div>
+
+    
+  </body>
+</html>

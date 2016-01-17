@@ -26,34 +26,34 @@
 
 #### 3.2.2.2.3 データの整形
 変換されたデータは、複数のシートに分割されている。また、複数の表が同一シートに存在している。
-![図 内定指数表の初期状態](images/scenario-find-nursery/index0.png "図 内定指数表の初期状態")   
+<img src="images/scenario-find-nursery/index0.png" width="60%" />  
 図 内定指数表の初期状態
 
-![図 定員表の初期状態](images/scenario-find-nursery/capacity0.png "図 定員表の初期状態")   
+<img src="images/scenario-find-nursery/capacity0.png" width="60%" />   
 図 定員表の初期状態
 
 これらの表を、一列に並べる。その際、セルの結合を解除しておくと作業しやすい。
 
-![図 シートに分かれた内定指数表を並べる](images/scenario-find-nursery/index1.png "図 シートに分かれた内定指数表を並べる")   
+<img src="images/scenario-find-nursery/index1.png" width="60%" />  
 図 シートに分かれた内定指数表を並べる
 
 一列に並べたら、昇順に並び替える。
 
-![図 内定指数表の並び換え条件](images/scenario-find-nursery/index2.png "図 内定指数表の並び換え条件")   
+<img src="images/scenario-find-nursery/index2.png" width="60%" />  
 図 内定指数表の並び換え条件
 
-![図 整形後の内定指数表](images/scenario-find-nursery/index3.png "図 整形後の内定指数表")   
+<img src="images/scenario-find-nursery/index3.png" width="60%" />  
 図 整形後の内定指数表
 
-![図 定員表の並び換え条件](images/scenario-find-nursery/capacity1.png "図 定員表の並び換え条件")   
+<img src="images/scenario-find-nursery/capacity1.png" width="60%" />  
 図 定員表の並び換え条件
 
-![図 整形後の定員表](images/scenario-find-nursery/capacity2.png "図 整形後の定員表")   
+<img src="images/scenario-find-nursery/capacity2.png" width="60%" />  
 図 整形後の定員表
 
-そして、整形された表を横に並べる。
+そして、整形された表を横に並べる。このとき、同じ保育所が同じ行に並んでいることを確認する。
 
-![図 内定指数表と定員表をドッキング](images/scenario-find-nursery/docking.png "図 内定指数表と定員表をドッキング")   
+<img src="images/scenario-find-nursery/docking.png" width="60%" />   
 図 内定指数表と定員表をドッキング
 
 #### 3.2.2.2.4 条件付き書式を利用して入所の可能性のある認可保育園をハイライト
@@ -69,12 +69,12 @@
 
 =AND(ISNUMBER(B5),B5>0,$B$1>=B5,M5>0)
 
-![図 条件付き書式のルール](images/scenario-find-nursery/rule.png "図 条件付き書式のルール")   
+<img src="images/scenario-find-nursery/rule.png" />  
 図 条件付き書式のルール
 
 これにより、B1セルに自分の家庭の指数を入力すると、入所の可能性のある認可保育園をハイライトできる。
 
-![図 検索結果画面](images/scenario-find-nursery/result.png "図 検索結果画面")   
+<img src="images/scenario-find-nursery/result.png" width="60%" />  
 図 検索結果画面
 
 
@@ -85,6 +85,8 @@
 
 ## 3.2.4 技術面での課題
 * 公開されているデータがPDF形式であるため、データ処理のためにExcel等に変換する必要がある。
+* 重ね合わせる2つのデータは、保育所の順番が一致していないため、並び替えが必要である。
+* Excelを利用した2種類のデータの重ねあわせ
 
 ## 3.2.5 ガバナンス面での課題
 
